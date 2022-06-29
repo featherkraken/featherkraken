@@ -3,7 +3,11 @@ package featherkraken.airports.kiwi.control;
 import static featherkraken.flights.test.EntityBuilder.fullAirport;
 import static featherkraken.kiwi.control.KiwiUtil.TEQUILA_API_KEY;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.hasSize;
 
 import java.util.List;
 
@@ -89,6 +93,6 @@ class KiwiAirportFinderIT
 
         List<Airport> airports = KiwiAirportFinder.findAirports(munich, 350);
 
-        assertThat(airports.stream().filter(airport -> airport.getName().equals("LEJ")).count(), is(1));
+        assertThat(airports, hasItem(hasProperty(Airport.Fields.name, equalTo("LEJ"))));
     }
 }
