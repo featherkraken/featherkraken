@@ -18,7 +18,9 @@ jobs:
       - name: Start docker containers
         run: docker-compose up --build -d
       - name: Run tests
-        run: mvn --batch-mode --update-snapshots verify -DtequilaApiKey=$TEQUILA_API_KEY
+        run: mvn --batch-mode --update-snapshots verify
+        env:
+          TEQUILA_API_KEY: $TEQUILA_API_KEY
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
