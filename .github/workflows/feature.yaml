@@ -20,7 +20,7 @@ jobs:
       - name: Run tests
         run: mvn --batch-mode --update-snapshots verify -DtequilaApiKey=$TEQUILA_API_KEY
         env:
-          TEQUILA_API_KEY: $TEQUILA_API_KEY
+          TEQUILA_API_KEY: ${{ secrets.TEQUILA_API_KEY }}
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
