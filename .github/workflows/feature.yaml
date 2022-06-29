@@ -13,6 +13,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 8
+      - name: Build project to package
+        run: mvn --batch-mode --update-snapshots clean package -DskipTests
       - name: Start docker containers
         run: docker-compose up --build -d
       - name: Run tests
